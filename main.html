@@ -44,10 +44,14 @@
         }
 
         .mainContainer > div {
-            display: flex;
+            /* display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: center; */
             padding: 50px
+        }
+
+        .mainContainer > div > img {
+            width: 100%;
         }
 
         .mainContainer > div > p {
@@ -65,7 +69,7 @@
             display: flex;
             flex-direction: column;
             align-items: start;
-            justify-content: space-evenly;
+            justify-content: space-between;
             width: 40%;
             height: 80%;
         }
@@ -122,7 +126,7 @@
                         buttons[j].classList.remove("active");
                     }
                     buttons[i].classList.add("active");
-                    contentDivs[i-1].style.display = "flex";
+                    contentDivs[i-1].style.display = "block";
                 });
             }
         }
@@ -164,10 +168,21 @@
                 Carbon monoxide (CO) is released when something is burned, such as in the combustion of fossil fuels or biomass. Outdoor levels are rarely high enough to cause issues; when they do reach dangerous levels, however, they can affect people with certain types of heart disease. CO is an excellent tracer of pollution transport since it is a long-lived in the atmosphere. It is also helpful for  identifying the source of air masses.
             </p>
         </div>
+        <div style="display: none; padding: 0; overflow-y: scroll;">
+            <img src="img/2018co.png" />
+            <img src="img/2019co.png" />
+            <img src="img/2020co.png" />
+            <img src="img/2021co.png" />
+            <img src="img/2022co.png" />
+            <img src="img/2023co.png" />
+        </div>
         <div style="display: none;">
             <h1>Author</h1>
+            <img src="img/profile.jpg" style="margin-top: 20px; width: 200px;"/>
+            <p><b style="color: inherit;">Dahami Gunathilake</b></p>
             <p>
-                
+                A dedicated and enthusiastic undergraduate majoring in electronics and Geography to pursue a successful career in Earth Sciences. 
+                I am currently reading for my BSc, at the University of Colombo and follow a diploma course on GIS at the University of Kelaniya.
             </p>
         </div>
     </div>
@@ -185,6 +200,7 @@
         <button>Description</button>
         <button>Source</button>
         <button>Why CO?</button>
+        <button>Time Series Data</button>
         <button>Author</button>
     </div>
 </body>

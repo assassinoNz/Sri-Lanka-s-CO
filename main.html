@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0px;
+            padding: 0px;
+            overflow: hidden;
+            font-size: 15px;
+            color: white;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+        }
+
+        body {
+            background-size: cover;
+            background-image: url("img/background.webp");
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            font-family: "calibri", "ubuntu";
+        }
+
+        .mainContainer {
+            width: 60%;
+            height: 90%;
+            border: 5px solid black;
+            border-left: none;
+            background-color: rgba(131, 130, 130, 0.92);
+        }
+
+        .mainContainer > iframe, .mainContainer > div {
+            width: 100%;
+            height: 100%;
+        }
+
+        .mainContainer > div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 50px
+        }
+
+        .mainContainer > div > p {
+            color: black;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .mainContainer > div > h1{
+            color: black;
+            font-size: 50px;
+        }
+        
+        .sideContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: space-evenly;
+            width: 40%;
+            height: 80%;
+        }
+
+        .sideContainer > button {
+            border: 5px solid black;
+            border-left: none;
+            background-color: black;
+            outline: none;
+            padding: 15px;
+            border-radius: 0 10px 10px 0;
+
+            transition: background-color 0.3s;
+        }
+
+        .sideContainer > button.active {
+            color: black;
+            background-color: white;
+        }
+
+        .sideContainer > button:hover {
+            color: black;
+            background-color: goldenrod;
+        }
+
+        .sideContainer > button > div {
+            text-align: left;
+            width: 75%;
+        }
+
+        .sideContainer > button > span {
+            text-transform: uppercase;
+            width: 100%;
+            text-align: left;
+            margin-top: 20px;
+            font-weight: bolder;
+        }
+
+        .sideContainer > button > div >span {
+            font-size: 15px;
+        }
+    </style>
+    <script>
+        function main() {
+            const buttons = document.querySelectorAll(".sideContainer > button");
+            const contentDivs = document.querySelectorAll(".mainContainer > *");
+            for (let i = 1; i < buttons.length; i++) {
+                console.log(buttons[i]);
+                buttons[i].addEventListener("click", () => {
+                    for (let j = 0; j < contentDivs.length; j++) {
+                        contentDivs[j].style.display = "none";
+                    }
+                    for (let j = 1; j < buttons.length; j++) {
+                        buttons[j].classList.remove("active");
+                    }
+                    buttons[i].classList.add("active");
+                    contentDivs[i-1].style.display = "flex";
+                });
+            }
+        }
+    </script>
+</head>
+
+<body onload="main();">
+    <div class="mainContainer">
+        <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="abcd"
+        src="https://universityofcolo.maps.arcgis.com/apps/Embed/index.html?webmap=ac1d00de71f545d2b360971f0c8d1a59&extent=78.9423,7.0768,82.1805,8.8394&zoom=true&previewImage=false&scale=true&disable_scroll=true&theme=light"
+            >
+        </iframe>
+        <div style="display: none;">
+            <h1>Description</h1>
+            <p>
+                This application allows users to explore and analyse the variations in Carbon Monoxide emissions across different years and regions within Sri Lanka. 
+            </p>
+            <p>
+                By collating and processing the CO concentration data obtained from Google Earth Engine Data Catalog, this application presents informative maps and visualizations that depict the changing landscape of CO emissions over the time frame. 
+            </p>
+        </div>
+        <div style="display: none;">
+            <h1>Source</h1>
+            <p>
+                TROPOMI
+                The Tropospheric Monitoring Instrument (TROPOMI) was co-funded by ESA (European Space Agency) and the Netherlands, and is a space-borne, nadir-viewing, imaging spectrometer covering wavelength bands between the ultraviolet and the shortwave infrared. TROPOMI is the single payload aboard ESA's Sentinel-5P spacecraft and measures the solar radiation reflected by and radiated from Earth. 
+            </p>
+            <p>
+                Data from Sentinel-5P<br>
+                Spatial resolution: Up to 5.5* km x 3.5 km (5.5 km in the satellite<br> flight direction and 3.5 km in the perpendicular direction at nadir)<br>
+                Spatial coverage: Global<br>
+                Revisit time: less than one day<br>
+                Data availability: since April 2018
+            </p>
+        </div>
+        <div style="display: none;">
+            <h1>Why CO?</h1>
+            <p>
+                Carbon monoxide (CO) is released when something is burned, such as in the combustion of fossil fuels or biomass. Outdoor levels are rarely high enough to cause issues; when they do reach dangerous levels, however, they can affect people with certain types of heart disease. CO is an excellent tracer of pollution transport since it is a long-lived in the atmosphere. It is also helpful for  identifying the source of air masses.
+            </p>
+        </div>
+        <div style="display: none;">
+            <h1>Author</h1>
+            <p>
+                
+            </p>
+        </div>
+    </div>
+    <div class="sideContainer">
+        <button style="background-color: black; display:flex; align-items: start; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 20px; width: 500px">
+            <img src="img/logo.jpeg" style="width: 20%;"/><br>
+            <div>
+                <span>Department of Geography</span><br>
+                <span>Faculty of Social Science</span><br>
+                <span>University of Kelaniya</span><br>
+            </div>
+            <span>Sri Lanka's Carbon Monoxide Emission Variations</span>
+        </button>
+        <button class="active">Map</button>
+        <button>Description</button>
+        <button>Source</button>
+        <button>Why CO?</button>
+        <button>Author</button>
+    </div>
+</body>
+</html>
